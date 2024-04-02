@@ -57,8 +57,36 @@ tranRouter.post('/', async (req, res) => {
  *      summary: Upload the transformed transactions to database. 
  *      tags: [Transaction]
  *      requestBody:
- *          required: true            
- *      description: "Uploads a list of transactions to the database. Each transaction object \
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          transactions:
+ *                              type: array
+ *                              items: 
+ *                                  type: object
+ *                                  properties:
+ *                                      transaction_id:
+ *                                          type: string
+ *                                      name:
+ *                                          type: string
+ *                                      date:
+ *                                          type: string
+ *                                      amount:
+ *                                          type: number
+ *                                      category:
+ *                                          type: string
+ *                  example:
+ *                      transactions:
+ *                          -   transaction_id: "apBBBJRnbvulWM36PoalTwWngmQ9VzIZJWoP6"
+ *                              name: "Touchstone Climbing"
+ *                              date: "2024-02-22"
+ *                              amount: 78.5
+ *                              category: "PERSONAL_CARE"
+ *              
+ *      description: "Uploads a list of transactions to the database. Require an array of object of transactions and each transaction object \
  *                  should contain the necessary information such as transaction ID, amount, \
  *                  date, and any other relevant details."
  *      responses:

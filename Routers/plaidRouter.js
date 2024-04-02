@@ -50,9 +50,15 @@ plaidRouter.post('/create_link_token', async function (request, response) {
  *  post:
  *      summary: Exchanges a public token for an access token from the Plaid API.. 
  *      tags: [Plaid]        
- *      description: Creates a Link token for the Plaid API to initialize Link and fetch transactions.
+ *      description: "Request Plaid API for an exchange of public token with access token. This access token will be the final \ 
+ *                  token that requires for exchange then with this token access request such as transactions is granted."
  *      requestBody:
  *          required: true
+ *          content: 
+ *              application/json:
+ *                  example:
+ *                      public_token: public-sandbox-8c8db53c-ee9d-47ec-a8e3-08d7e5f51343
+ *                                  
  *      responses:
  *          200:
  *              description:  Access Token retrieved successfully
